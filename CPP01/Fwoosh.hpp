@@ -1,8 +1,13 @@
 #ifndef FWOOSH_HPP
 #define FWOOSH_HPP
 
-class fwoosh{
-    
+#include "ASpell.hpp"
+
+class Fwoosh: public ASpell{
+    public:
+        Fwoosh();
+        ~Fwoosh();
+        Fwoosh *clone();
 };
 
 #endif
