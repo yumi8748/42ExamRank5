@@ -45,24 +45,16 @@ void    Warlock::introduce() const
 
 void Warlock::learnSpell(ASpell *spell)
 {
-    if (spell) {
-        spellBook[spell->getName()] = spell->clone();
-    }
+    spellBook.learnSpell(spell);
 }
 
 void Warlock::forgetSpell(std::string spellName)
 {
-	if (spellBook.find(spellName) != spellBook.end())
-	{
-		delete(spellBook[spellName]);
-		spellBook.erase(spellName); //!!
-	}
+	spellBook.forgetSpell(spellName);
 }
 
 void Warlock::launchSpell(std::string spellName, ATarget &target)
 {
-	if (spellBook.find(spellName) != spellBook.end())
-	{
-		spellBook[spellName]->launch(target);
-	}
+	if (spellBook.createSpell(spellName))
+        spellBook.createSpell(spellName)->launch(target);
 }
